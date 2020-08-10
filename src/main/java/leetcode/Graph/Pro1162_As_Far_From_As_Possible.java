@@ -1,6 +1,5 @@
 package leetcode.Graph;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -8,15 +7,13 @@ import java.util.Queue;
  * @program: leeeeetcode
  * @description:
  * @author: niuliguo
- * @create: 2020-07-04 16:43
+ * @create: 2020-07-19 20:38
  **/
-public class Pro542_01_Matrix {
-
+public class Pro1162_As_Far_From_As_Possible {
 
     /**
-     * BFS：这道题的bug点在于以0初始队列条件
-     * 1.将matrix值为0的坐标点加入到队列中
-     * 2.出队入队
+     * BFS:类Pro542
+     * @param
      * @return
      */
 
@@ -29,24 +26,31 @@ public class Pro542_01_Matrix {
             this.col = col;
         }
     }
-
-    public int[][] updateMatrix(int[][] matrix) {
-        if (matrix == null || matrix[0].length == 0) {
-            return new int[0][0];
+    public int maxDistance(int[][] grid) {
+        if (grid == null || grid[0].length == 0) {
+            return 0;
         }
 
-        int m = matrix.length;
-        int n = matrix[0].length;
+        int m = grid.length;
+        int n = grid[0].length;
         boolean[][] visited = new boolean[m][n];
-//        Arrays.fill(visited, false);
         Queue<Point> queue = new LinkedList<>();
+        boolean allZero = true;
+        int oneCnt = 0;
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++)  {
-                if (matrix[i][j] == 0) {
+                if (grid[i][j] == 1) {
+                    allZero  = false;
+                    grid[i][j] = 0; //跟Pro542的区别，置零
                     visited[i][j] = true;
                     queue.add(new Point(i, j));
+                    oneCnt++;
                 }
             }
+        }
+
+        if (allZero || oneCnt == m * n) {
+            return -1;
         }
 
         int[][]  dirs = new int[][]{{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
@@ -64,42 +68,31 @@ public class Pro542_01_Matrix {
                 }
 
                 visited[newRow][newCol] = true;
-                matrix[newRow][newCol] = matrix[row][col] + 1;
+                grid[newRow][newCol] = grid[row][col] + 1;
                 queue.add(new Point(newRow, newCol));
             }
         }
 
-        return matrix;
-    }
+        int max = -1;
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++)  {
+                if (grid[i][j] > max) {
+                    max = grid[i][j];
+                }
+            }
+        }
 
-    /**
-     * 1.DFS，没啥可说的就是dfs，dfs的时候要记得回溯
-     * @param matrix
-     * @return
-     */
-    public int[][] updateMatrix1(int[][] matrix) {
-        return null;
-    }
-
-    /**
-     * 1.DP
-     * @param matrix
-     * @return
-     */
-    public int[][] updateMatrix2(int[][] matrix) {
-        return new int[0][0];
+        return max;
     }
 
     public static void main(String[] args) {
-        Pro542_01_Matrix pro = new Pro542_01_Matrix();
-        int[][] matrix = new int[][]{
-                {0, 0, 0},
-                {0, 1, 0},
-                {1, 1, 1}
+        Pro1162_As_Far_From_As_Possible pro = new Pro1162_As_Far_From_As_Possible();
+        int[][]  grid = new int[][]{
+                {1, 0 ,0},
+                {0, 0 ,0},
+                {0, 0 ,0},
         };
 
-        System.out.println(pro.updateMatrix(matrix));
-
-        System.out.println(Integer.MAX_VALUE + 1);
+        System.out.println(pro.maxDistance(grid));
     }
 }
