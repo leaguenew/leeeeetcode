@@ -1,6 +1,5 @@
 package leetcode.Stack;
 
-import com.sun.tools.javac.util.Assert;
 
 import java.util.Stack;
 

@@ -1,6 +1,5 @@
 package leetcode.HashTable;
 
-import com.sun.deploy.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.Hashtable;
