@@ -1,6 +1,14 @@
 package leetcode.DP;
 
-public class Pro53 {
+
+/**
+ * 1.划分状态，即划分子问题。
+ * 2.状态表示，dp[i]或者dp[i][j]代表什么。
+ * 3.状态转移，dp[i] = max{dp[i - 1], dp[i - 1] + num[i]);
+ * 4.确定边界：初始值，dp[0]，dp[1]是什么
+ * 5.取得结果
+ */
+public class Pro53_maxSubArray {
 
     public int maxSubArray(int[] nums) {
 
@@ -27,7 +35,7 @@ public class Pro53 {
     }
 
     public static void main(String[] args) {
-        Pro53 pro = new Pro53();
+        Pro53_maxSubArray pro = new Pro53_maxSubArray();
 
         int nums[] = new int[]{-2,1,-3,4,-1,2,1,-5,4};
 
