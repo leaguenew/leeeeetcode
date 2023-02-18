@@ -14,7 +14,7 @@ public class Pro72_Edit_Distance {
      * 2.状态定义：dp[i][j], word1[0..i]和word2[0..j]的编辑距离
      * 3.状态转移方程：
      * if word1[i] == word2[j]:
-     *    dp[i][j] = 1 + min(dp[i][j-1], dp[i-1][j], dp[i-1][j-1] - 1)
+     *    dp[i][j] = min(dp[i][j-1] + 1, dp[i-1][j] + 1, dp[i-1][j-1])
      * else:
      *    插入word1: 1 + dp[i][j - 1]
      *    删除word1: 1 + dp[i-1][j]

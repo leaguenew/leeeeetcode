@@ -1,6 +1,5 @@
 package leetcode.Math;
 
-import jdk.nashorn.internal.ir.IdentNode;
 
 import java.util.ArrayList;
 import java.util.List;

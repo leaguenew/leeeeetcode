@@ -2,23 +2,26 @@ package leetcode.Array;
 
 public class Pro209 {
 
-    public int minSubArrayLen(int s, int[] nums) {
+    public int minSubArrayLen(int target, int[] nums) {
 
-        int window = 0 , len = nums.length, sum = 0;
-        for (int i = 0, j = 0; i < len && j < len;) {
-            if (i == j) {
-                sum = nums[i];
-                if (sum > s) {
-                    return j - i + 1;
-                }
-
-                j++;
-            }
-//            /if ()
-
+        if (null == nums || nums.length == 0) {
+            return 0;
         }
 
-        return 0;
+        int sum = 0, len = nums.length;
+        int res = Integer.MAX_VALUE;
+        for(int i = 0; i < len; i++) {
+            sum = 0;
+            for(int j = i; j < len; j++) {
+                sum += nums[j];
+                if (sum >= target) {
+                    res = Math.min(res, j - i + 1);
+                    break;
+                }
+            }
+        }
+
+        return res == Integer.MAX_VALUE ? 0 : res;
     }
 
     public static void main(String[] args) {

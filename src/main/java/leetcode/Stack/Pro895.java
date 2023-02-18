@@ -1,6 +1,5 @@
 package leetcode.Stack;
 
-import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.*;
 
