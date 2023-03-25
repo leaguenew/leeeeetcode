@@ -1,6 +1,5 @@
 package leetcode.Backtrace;
 
-import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.ArrayList;
 import java.util.HashSet;

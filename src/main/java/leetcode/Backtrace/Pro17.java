@@ -63,7 +63,15 @@ public class Pro17 {
     }
 
     public static void main(String[] args) {
-        Pro17 pro = new Pro17();
-        System.out.println(pro.letterCombinations("234"));
+//        Pro17 pro = new Pro17();
+//        System.out.println(pro.letterCombinations("234"));
+        List<String> list = new ArrayList<>();
+        StringBuffer sb = new StringBuffer();
+        sb.append("a");
+        sb.append("b");
+        list.add(sb.toString());
+        sb.append("c");
+        list.add(sb.toString());
+        System.out.println(list);
     }
 }

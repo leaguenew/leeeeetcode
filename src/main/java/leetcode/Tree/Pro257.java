@@ -57,11 +57,23 @@ public class Pro257 {
     }
 
     public static void main(String[] args) {
-        Pro257 pro = new Pro257();
-        TreeNode l3Node1 = new TreeNode(5);
-        TreeNode l2Node1 = new TreeNode(2, null, l3Node1);
-        TreeNode l2Node2 = new TreeNode(3, null, null);
-        TreeNode root = new TreeNode(1, l2Node1, l2Node2);
-        System.out.println(pro.binaryTreePaths(root));
+//        Pro257 pro = new Pro257();
+//        TreeNode l3Node1 = new TreeNode(5);
+//        TreeNode l2Node1 = new TreeNode(2, null, l3Node1);
+//        TreeNode l2Node2 = new TreeNode(3, null, null);
+//        TreeNode root = new TreeNode(1, l2Node1, l2Node2);
+//        System.out.println(pro.binaryTreePaths(root));
+
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        List<List<Integer>> res = new ArrayList<>();
+        res.add(list);
+        List list1 = new ArrayList<>(list);
+        list1.add(4);
+        res.add(new ArrayList<>(list1));
+        System.out.println(res.size());
+        System.out.println(res);
     }
 }
